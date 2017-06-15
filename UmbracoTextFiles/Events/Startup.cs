@@ -23,15 +23,16 @@ namespace UmbracoTextFiles.Events
 
         public void OnApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            var contentService = applicationContext.Services.ContentService;
-            var textFileContentEvents = new TextFileContentEvents(contentService);
-            ContentService.Published += textFileContentEvents.Published;
-            ContentService.UnPublished += textFileContentEvents.UnPublished;
-            
-            var contentTypeService = applicationContext.Services.ContentTypeService;
-
+            // Got to catch them all incase Umbraco hasn't been setup... :(
             try
             {
+                var contentService = applicationContext.Services.ContentService;
+                var textFileContentEvents = new TextFileContentEvents(contentService);
+                ContentService.Published += textFileContentEvents.Published;
+                ContentService.UnPublished += textFileContentEvents.UnPublished;
+
+                var contentTypeService = applicationContext.Services.ContentTypeService;
+
                 var textFileContentType = contentTypeService.GetContentType("textFile");
                 if (textFileContentType == null)
                 {
