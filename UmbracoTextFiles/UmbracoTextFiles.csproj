@@ -251,39 +251,61 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
-    <Content Include="config\imageprocessor\security.config" />
-    <Content Include="config\imageprocessor\processing.config" />
-    <Content Include="config\imageprocessor\cache.config" />
-    <Content Include="App_Plugins\ModelsBuilder\package.manifest" />
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
-    <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
-    <Content Include="Views\Partials\Grid\Editors\Media.cshtml" />
-    <Content Include="Views\Partials\Grid\Editors\Macro.cshtml" />
-    <Content Include="Views\Partials\Grid\Editors\Embed.cshtml" />
-    <Content Include="Views\Partials\Grid\Editors\Base.cshtml" />
-    <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
-    <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
-    <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
-    <Content Include="Views\Partials\Grid\Bootstrap2-Fluid.cshtml" />
-    <Content Include="Media\Web.config" />
-    <Content Include="config\umbracoSettings.config" />
-    <Content Include="config\trees.config" />
-    <Content Include="config\tinyMceConfig.config" />
-    <Content Include="config\scripting.config" />
-    <Content Include="config\metablogConfig.config" />
-    <Content Include="config\log4net.config" />
-    <Content Include="config\FileSystemProviders.config" />
-    <Content Include="config\feedProxy.config" />
-    <Content Include="config\ExamineSettings.config" />
-    <Content Include="config\ExamineIndex.config" />
-    <Content Include="config\EmbeddedMedia.config" />
-    <Content Include="config\Dashboard.config" />
-    <Content Include="config\ClientDependency.config" />
-    <Content Include="config\BaseRestExtensions.config" />
-    <Content Include="config\applications.config" />
-    <Content Include="config\404handlers.config" />
+    <None Include="config\Lang\cs-CZ.user.xml" />
+    <None Include="config\Lang\da-DK.user.xml" />
+    <None Include="config\Lang\de-DE.user.xml" />
+    <None Include="config\Lang\en-GB.user.xml" />
+    <None Include="config\Lang\en-US.user.xml" />
+    <None Include="config\Lang\es-ES.user.xml" />
+    <None Include="config\Lang\fr-FR.user.xml" />
+    <None Include="config\Lang\he-IL.user.xml" />
+    <None Include="config\Lang\it-IT.user.xml" />
+    <None Include="config\Lang\ja-JP.user.xml" />
+    <None Include="config\Lang\ko-KR.user.xml" />
+    <None Include="config\Lang\nb-NO.user.xml" />
+    <None Include="config\Lang\nl-NL.user.xml" />
+    <None Include="config\Lang\pl-PL.user.xml" />
+    <None Include="config\Lang\pt-BR.user.xml" />
+    <None Include="config\Lang\ru-RU.user.xml" />
+    <None Include="config\Lang\sv-SE.user.xml" />
+    <None Include="config\Lang\zh-CN.user.xml" />
+    <None Include="default.aspx" />
+    <None Include="Global.asax" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="config\imageprocessor\security.config" />
+    <None Include="config\imageprocessor\processing.config" />
+    <None Include="config\imageprocessor\cache.config" />
+    <None Include="App_Plugins\ModelsBuilder\package.manifest" />
+    <None Include="Views\Web.config" />
+    <None Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
+    <None Include="Views\Partials\Grid\Editors\Media.cshtml" />
+    <None Include="Views\Partials\Grid\Editors\Macro.cshtml" />
+    <None Include="Views\Partials\Grid\Editors\Embed.cshtml" />
+    <None Include="Views\Partials\Grid\Editors\Base.cshtml" />
+    <None Include="Views\Partials\Grid\Bootstrap3.cshtml" />
+    <None Include="Views\Partials\Grid\Bootstrap2.cshtml" />
+    <None Include="config\umbracoSettings.config" />
+    <None Include="Views\Partials\Grid\Editors\Rte.cshtml" />
+    <None Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
+    <None Include="Views\Partials\Grid\Bootstrap2-Fluid.cshtml" />
+    <None Include="Media\Web.config" />
+    <None Include="config\trees.config" />
+    <None Include="config\tinyMceConfig.config" />
+    <None Include="config\scripting.config" />
+    <None Include="config\metablogConfig.config" />
+    <None Include="config\log4net.config" />
+    <None Include="config\FileSystemProviders.config" />
+    <None Include="config\feedProxy.config" />
+    <None Include="config\ExamineSettings.config" />
+    <None Include="config\ExamineIndex.config" />
+    <None Include="config\EmbeddedMedia.config" />
+    <None Include="config\Dashboard.config" />
+    <None Include="config\ClientDependency.config" />
+    <None Include="config\BaseRestExtensions.config" />
+    <None Include="config\applications.config" />
+    <None Include="config\404handlers.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -292,31 +314,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
-    <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
-    <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
-    <Content Include="config\grid.editors.config.js" />
-    <Content Include="config\Lang\cs-CZ.user.xml" />
-    <Content Include="config\Lang\da-DK.user.xml" />
-    <Content Include="config\Lang\de-DE.user.xml" />
-    <Content Include="config\Lang\en-GB.user.xml" />
-    <Content Include="config\Lang\en-US.user.xml" />
-    <Content Include="config\Lang\es-ES.user.xml" />
-    <Content Include="config\Lang\fr-FR.user.xml" />
-    <Content Include="config\Lang\he-IL.user.xml" />
-    <Content Include="config\Lang\it-IT.user.xml" />
-    <Content Include="config\Lang\ja-JP.user.xml" />
-    <Content Include="config\Lang\ko-KR.user.xml" />
-    <Content Include="config\Lang\nb-NO.user.xml" />
-    <Content Include="config\Lang\nl-NL.user.xml" />
-    <Content Include="config\Lang\pl-PL.user.xml" />
-    <Content Include="config\Lang\pt-BR.user.xml" />
-    <Content Include="config\Lang\ru-RU.user.xml" />
-    <Content Include="config\Lang\sv-SE.user.xml" />
-    <Content Include="config\Lang\zh-CN.user.xml" />
-    <Content Include="default.aspx" />
-    <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <None Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
+    <None Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
+    <None Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
+    <None Include="config\grid.editors.config.js" />
+    <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Events\Startup.cs" />
@@ -328,6 +330,7 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
