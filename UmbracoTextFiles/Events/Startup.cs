@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using Umbraco.Core;
 using Umbraco.Core.Logging;
@@ -52,10 +53,11 @@ namespace UmbracoTextFiles.Events
                     contentTypeService.Save(contentType);
                 }
             }
-            catch (SqlException sqlEx)
+            catch (Exception ex)
             {
                 // Umbraco is most likely not installed yet!
-                LogHelper.Error<Startup>("Unable to create doc type for text file because Umbraco db is unavailable!", sqlEx);
+                LogHelper.Error<Startup>("Unable to create doc type for text file because Umbraco is most likely not installed!",
+                    ex);
             }
         }
     }
