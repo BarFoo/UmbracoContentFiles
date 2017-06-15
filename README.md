@@ -10,4 +10,6 @@ Install via nuget
 
 `Install-Package UmbracoTextFiles`
 
+WARNING: Only install this after you have installed Umbraco. I will sort out a workaround soon, the try catch isn't enough.
+
 More to come soon...
