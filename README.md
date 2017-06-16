@@ -1,7 +1,7 @@
-# Umbraco Text Files (Alpha)
-Text file content nodes that are synced to physical text files.
+# Umbraco Raw Files (Alpha)
+Raw file content nodes that are synced to physical files.
 
-This package will create a new document type named 'Text File' with an alias of 'textFile' if one doesn't already exist. You will need to update
+This package will create a new document type named 'Raw File' with an alias of 'rawFile' if one doesn't already exist. You will need to update
 permissions for the parent nodes you would like to create text files within e.g. home.
 
 Only tested in 7.3+ so it has a dependency for that version or above.
