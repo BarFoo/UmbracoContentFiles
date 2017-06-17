@@ -1,7 +1,7 @@
 branches:
   only:
     - master
-	
+
 version: 0.2.1.{build}
 	
 build_script:
@@ -10,7 +10,7 @@ build_script:
 
 artifacts:
   - path: releases\*.nupkg
-	
+
 deploy:
   provider: NuGet
   server:                  # remove to push to NuGet.org
