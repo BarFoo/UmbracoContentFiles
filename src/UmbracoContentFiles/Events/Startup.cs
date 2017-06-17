@@ -32,31 +32,38 @@ namespace UmbracoContentFiles.Events
                 return;
             }
 
-            var contentService = applicationContext.Services.ContentService;
-            var textFileContentEvents = new FileContentEvents(contentService);
-            ContentService.Published += textFileContentEvents.Published;
-            ContentService.UnPublished += textFileContentEvents.UnPublished;
-
-            var contentTypeService = applicationContext.Services.ContentTypeService;
-            var textFileContentType = contentTypeService.GetContentType("contentFile");
-            if (textFileContentType == null)
+            try
             {
-                var textboxMultipleDef = new DataTypeDefinition(-1, "Umbraco.TextboxMultiple");
+                var contentService = applicationContext.Services.ContentService;
+                var textFileContentEvents = new FileContentEvents(contentService);
+                ContentService.Published += textFileContentEvents.Published;
+                ContentService.UnPublished += textFileContentEvents.UnPublished;
 
-                var contentType = new ContentType(-1)
+                var contentTypeService = applicationContext.Services.ContentTypeService;
+                var textFileContentType = contentTypeService.GetContentType("contentFile");
+                if (textFileContentType == null)
                 {
-                    Alias = "contentFile",
-                    Name = "Content File",
-                    Icon = "icon-files"
-                };
+                    var textboxMultipleDef = new DataTypeDefinition(-1, "Umbraco.TextboxMultiple");
 
-                var propertyType = new PropertyType(textboxMultipleDef, "fileContent");
-                propertyType.Name = "Content";
+                    var contentType = new ContentType(-1)
+                    {
+                        Alias = "contentFile",
+                        Name = "Content File",
+                        Icon = "icon-files"
+                    };
 
-                contentType.AddPropertyGroup("Content");
-                contentType.AddPropertyType(propertyType, "Content");
+                    var propertyType = new PropertyType(textboxMultipleDef, "fileContent");
+                    propertyType.Name = "Content";
 
-                contentTypeService.Save(contentType);
+                    contentType.AddPropertyGroup("Content");
+                    contentType.AddPropertyType(propertyType, "Content");
+
+                    contentTypeService.Save(contentType);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error<Startup>("Unable to setup content file document type", ex);
             }
         }
     }
