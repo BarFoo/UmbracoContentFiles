@@ -11,7 +11,7 @@ namespace UmbracoContentFiles.Events
 {
     public class FileContentEvents
     {
-        protected const string TextFileContentField = "textFileContent";
+        protected const string TextFileContentField = "fileContent";
         protected string RootApplicationPath { get; set; }
         protected IContentService ContentService { get; set; }
 
@@ -22,7 +22,7 @@ namespace UmbracoContentFiles.Events
         }
 
         /// <summary>
-        /// Synch the text file content to a physical path when published
+        /// Synch the file content to a physical path when published
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -34,19 +34,11 @@ namespace UmbracoContentFiles.Events
                 var path = GetPath(ent);
 
                 System.IO.File.WriteAllText(path, ent.GetValue<string>(TextFileContentField));
-
-                // Force the content node name to end with .txt
-                if (!ent.Name.EndsWith(".txt"))
-                {
-                    ent.Name = ent.Name + ".txt";
-                    ContentService.SaveAndPublishWithStatus(ent, 0, false);
-                }
-                
             }
         }
 
         /// <summary>
-        /// Remove matching text files when unpublished
+        /// Remove matching files when unpublished
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -63,7 +55,7 @@ namespace UmbracoContentFiles.Events
                 }
                 else
                 {
-                    LogHelper.Warn(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType, "Path {0} for text file not found", () => path);
+                    LogHelper.Warn(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType, "Path {0} for file not found", () => path);
                 }
             }
         }
@@ -92,6 +84,7 @@ namespace UmbracoContentFiles.Events
                     break;
                 }
 
+                // Clean invalid characters from the directory name
                 var parentDirectoryName = invalidPathChars
                     .Aggregate(workingParent.Name, (current, c) => current.Replace(c, '-')).Replace(" ", "-");
 
@@ -100,15 +93,13 @@ namespace UmbracoContentFiles.Events
                 workingParent = workingParent.Parent();
             }
             
-            // todo: Should this logic even be here? Seems a bit ugly, same with the above
             var fileDirectory = Path.GetDirectoryName(RootApplicationPath + fullPath);
             if (fileDirectory != null && !Directory.Exists(fileDirectory))
             {
                 Directory.CreateDirectory(fileDirectory.ToLower());
             }
-            
-            // Enforce .txt extension incase the entity path doesn't have one
-            return RootApplicationPath + string.Format("{0}.txt", fullPath.ToLower().Replace(".txt", string.Empty));
+
+            return RootApplicationPath + fullPath.ToLower();
         }
     }
 }

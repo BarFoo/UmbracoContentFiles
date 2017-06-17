@@ -6,8 +6,7 @@ using Umbraco.Web.Routing;
 namespace UmbracoContentFiles.RequestPipeline
 {
     /// <summary>
-    /// Required because Umbraco strips out the period from the URL, this is useful
-    /// really for the backoffice link to document
+    /// This provider is useful for showing links in the backoffice when the content name contains an extension
     /// </summary>
     public class FileUrlProvider : IUrlProvider
     {
@@ -22,9 +21,9 @@ namespace UmbracoContentFiles.RequestPipeline
             var list = new List<string>();
 
             var content = umbracoContext.ContentCache.GetById(id);
-            if (content != null && content.DocumentTypeAlias == "textFile" && content.Parent != null)
+            if (content != null && content.DocumentTypeAlias == "contentFile" && content.Parent != null && content.Name.Contains("."))
             {
-                // This may look odd, but this line of code keeps the '.txt' part of the name when displaying this contents URL
+                // This may look odd, but this line of code keeps the '.extension' part of the name when displaying this contents URL
                 // within link to document or such
                 list.Add(content.Parent.Url.TrimEnd('/') + "/" + content.Name.Replace(" ", "-").ToLower());
             }

@@ -21,42 +21,39 @@ namespace UmbracoContentFiles.Events
 
         public void OnApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            // Got to catch them all incase Umbraco hasn't been setup... :(
+            var contentService = applicationContext.Services.ContentService;
+            var textFileContentEvents = new FileContentEvents(contentService);
+            ContentService.Published += textFileContentEvents.Published;
+            ContentService.UnPublished += textFileContentEvents.UnPublished;
+
+            // This part needs a try catch incase Umbraco hasn't been setup yet
             try
-            {
-                var contentService = applicationContext.Services.ContentService;
-                var textFileContentEvents = new FileContentEvents(contentService);
-                ContentService.Published += textFileContentEvents.Published;
-                ContentService.UnPublished += textFileContentEvents.UnPublished;
-
+            { 
                 var contentTypeService = applicationContext.Services.ContentTypeService;
-
-                var textFileContentType = contentTypeService.GetContentType("textFile");
+                var textFileContentType = contentTypeService.GetContentType("contentFile");
                 if (textFileContentType == null)
                 {
                     var textboxMultipleDef = new DataTypeDefinition(-1, "Umbraco.TextboxMultiple");
 
                     var contentType = new ContentType(-1)
                     {
-                        Alias = "textFile",
-                        Name = "Text File",
+                        Alias = "contentFile",
+                        Name = "Content File",
                         Icon = "icon-files"
                     };
 
-                    var propertyType = new PropertyType(textboxMultipleDef, "textFileContent");
+                    var propertyType = new PropertyType(textboxMultipleDef, "fileContent");
                     propertyType.Name = "Content";
 
-                    contentType.AddPropertyGroup("File Content");
-                    contentType.AddPropertyType(propertyType, "File Content");
+                    contentType.AddPropertyGroup("Content");
+                    contentType.AddPropertyType(propertyType, "Content");
 
                     contentTypeService.Save(contentType);
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                // Umbraco is most likely not installed yet!
-                LogHelper.Error<Startup>("Unable to create doc type for text file because Umbraco is most likely not installed!",
-                    ex);
+                
             }
         }
     }
