@@ -85,15 +85,10 @@
     <ItemGroup>
       <BinFiles Include="$(CoreProjectDir)\bin\**\UmbracoContentFiles.dll" />
 	  <NuSpecFile Include="$(MSBuildProjectDirectory)\package.nuspec" />
-	  <NugetReadmeFile Include="$(MSBuildProjectDirectory)\readme.txt" />
     </ItemGroup>
     
 	<Copy SourceFiles="@(NuSpecFile)" DestinationFolder="$(BuildNuGetDir)" />
     	 
-	
-
-	<Copy SourceFiles="@(NugetReadmeFile)" DestinationFolder="$(BuildNuGetDir)\" />
-	
     <Copy SourceFiles="@(BinFiles)"
     DestinationFiles="@(BinFiles->'$(BuildNuGetDir)\lib\%(RecursiveDir)%(Filename)%(Extension)')" />
 	
