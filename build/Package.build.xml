@@ -36,11 +36,10 @@
 	</PropertyGroup>
   
 	<PropertyGroup>
-		<VersionMajor>3</VersionMajor>
+		<VersionMajor>0</VersionMajor>
 		<VersionMinor>2</VersionMinor>
 		<VersionPatch>1</VersionPatch>
 		<VersionSuffix></VersionSuffix>
-		<UmbracoVersion>4.8.0</UmbracoVersion>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -116,7 +115,6 @@
 			LicenseUrl="$(PackageLicenseUrl)"
 			ProjectUrl="$(ProjectUrl)"
 			Id="$(PackageId)"
-			IconUrl="$(IconUrl)"
 			Language="$(Language)"
 			RequireLicenseAcceptance="$(RequireLicenseAcceptance)"
 			Tags="$(Tags)"
