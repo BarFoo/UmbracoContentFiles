@@ -20,7 +20,7 @@
 		<AuthorUrl>https://www.github.com/BarFoo/</AuthorUrl>
 		<PackageLicenseName>MIT license</PackageLicenseName>
 		<PackageLicenseUrl>http://www.opensource.org/licenses/mit-license.php</PackageLicenseUrl>
-		<ProjectUrl>https://www.github.com/BarFoo/</ProjectUrl>
+		<ProjectUrl>https://www.github.com/BarFoo/UmbracoContentFiles/</ProjectUrl>
 		<IconUrl>https://raw.githubusercontent.com/BarFoo/UmbracoContentFiles/master/icon.png</IconUrl>
 	</PropertyGroup>
 
