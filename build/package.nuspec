@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>UmbracoTextFiles</id>
-    <version>0.1.4</version>
-    <title>Umbraco Text Files</title>
+    <id>UmbracoContentFiles</id>
+    <version>0.2.1</version>
+    <title>Umbraco Content Files</title>
     <authors>David Parr</authors>
     <owners>David Parr</owners>
     <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
-    <projectUrl>https://github.com/BarFoo/UmbracoTextFiles</projectUrl>
+    <projectUrl>https://github.com/BarFoo/UmbracoContentFiles/</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>(ALPHA!) Allows creating and syncing file based text files with Umbraco content nodes</description>
-    <releaseNotes>Accommodate for all exceptions on startup, as if Umbraco hasn't been setup correctly prior it can cause all manner of issues!</releaseNotes>
+    <description>(ALPHA!) Allows creating and syncing content nodes with files on the filesystem.</description>
+    <releaseNotes>Refactor and trying to get appveyor build and packaging working</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>umbraco umbracocms</tags>
 	<dependencies>
