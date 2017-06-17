@@ -21,6 +21,7 @@
 		<PackageLicenseName>MIT license</PackageLicenseName>
 		<PackageLicenseUrl>http://www.opensource.org/licenses/mit-license.php</PackageLicenseUrl>
 		<ProjectUrl>https://www.github.com/BarFoo/</ProjectUrl>
+		<IconUrl></IconUrl>
 	</PropertyGroup>
 
 	<!-- NUGET ONLY PROPERTIES -->
@@ -40,6 +41,7 @@
 		<VersionMinor>2</VersionMinor>
 		<VersionPatch>1</VersionPatch>
 		<VersionSuffix></VersionSuffix>
+		<UmbracoVersion>7.3.0</UmbracoVersion>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -115,6 +117,7 @@
 			LicenseUrl="$(PackageLicenseUrl)"
 			ProjectUrl="$(ProjectUrl)"
 			Id="$(PackageId)"
+			IconUrl="$(IconUrl)"
 			Language="$(Language)"
 			RequireLicenseAcceptance="$(RequireLicenseAcceptance)"
 			Tags="$(Tags)"
