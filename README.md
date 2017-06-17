@@ -8,7 +8,7 @@ Only tested in 7.3+ so it has a dependency for that version or above.
 
 ## Installation
 
-Migrations Viewer is available for installation in the following ways:
+Umbraco content files is available for installation from nuget only at the moment:
 
 | Source      |             |
 |-------------|-------------|
