@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using Umbraco.Core;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
 using Umbraco.Core.Services;
 using Umbraco.Web.Routing;
-using UmbracoTextFiles.RequestPipeline;
+using UmbracoContentFiles.RequestPipeline;
 
-namespace UmbracoTextFiles.Events
+namespace UmbracoContentFiles.Events
 {
     public class Startup : IApplicationEventHandler
     {
@@ -18,7 +16,7 @@ namespace UmbracoTextFiles.Events
 
         public void OnApplicationStarting(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            UrlProviderResolver.Current.InsertTypeBefore<DefaultUrlProvider, TextFileUrlProvider>();
+            UrlProviderResolver.Current.InsertTypeBefore<DefaultUrlProvider, FileUrlProvider>();
         }
 
         public void OnApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
@@ -27,7 +25,7 @@ namespace UmbracoTextFiles.Events
             try
             {
                 var contentService = applicationContext.Services.ContentService;
-                var textFileContentEvents = new TextFileContentEvents(contentService);
+                var textFileContentEvents = new FileContentEvents(contentService);
                 ContentService.Published += textFileContentEvents.Published;
                 ContentService.UnPublished += textFileContentEvents.UnPublished;
 

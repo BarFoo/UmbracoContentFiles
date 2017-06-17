@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>UmbracoTextFiles</id>
+    <version>0.1.4</version>
+    <title>Umbraco Text Files</title>
+    <authors>David Parr</authors>
+    <owners>David Parr</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/BarFoo/UmbracoTextFiles</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>(ALPHA!) Allows creating and syncing file based text files with Umbraco content nodes</description>
+    <releaseNotes>Accommodate for all exceptions on startup, as if Umbraco hasn't been setup correctly prior it can cause all manner of issues!</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>umbraco umbracocms</tags>
+	<dependencies>
+        <dependency id="UmbracoCms.core" version="7.3" />
+    </dependencies>
+  </metadata>
+</package>

@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UmbracoTextFiles</RootNamespace>
-    <AssemblyName>UmbracoTextFiles</AssemblyName>
+    <RootNamespace>UmbracoContentFiles</RootNamespace>
+    <AssemblyName>UmbracoContentFiles</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -322,9 +322,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Events\Startup.cs" />
-    <Compile Include="Events\TextFileContentEvents.cs" />
+    <Compile Include="Events\FileContentEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestPipeline\TextFileUrlProvider.cs" />
+    <Compile Include="RequestPipeline\FileUrlProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />

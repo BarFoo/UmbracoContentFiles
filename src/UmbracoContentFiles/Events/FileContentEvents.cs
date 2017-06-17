@@ -1,21 +1,21 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
+using System.Web.Hosting;
 using Umbraco.Core.Events;
+using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
 using Umbraco.Core.Publishing;
 using Umbraco.Core.Services;
-using Umbraco.Core.Logging;
-using System.IO;
-using System.Web.Hosting;
 
-namespace UmbracoTextFiles.Events
+namespace UmbracoContentFiles.Events
 {
-    public class TextFileContentEvents
+    public class FileContentEvents
     {
         protected const string TextFileContentField = "textFileContent";
         protected string RootApplicationPath { get; set; }
         protected IContentService ContentService { get; set; }
 
-        public TextFileContentEvents(IContentService contentService)
+        public FileContentEvents(IContentService contentService)
         {
             ContentService = contentService;
             RootApplicationPath = HostingEnvironment.ApplicationPhysicalPath;
@@ -28,7 +28,7 @@ namespace UmbracoTextFiles.Events
         /// <param name="e"></param>
         public void Published(IPublishingStrategy sender, PublishEventArgs<IContent> e)
         {
-            LogHelper.Info<TextFileContentEvents>("Published event for UmbracoTextFiles");
+            LogHelper.Info<FileContentEvents>("Published event for UmbracoTextFiles");
             foreach (var ent in e.PublishedEntities.Where(x => x.HasProperty(TextFileContentField)))
             {
                 var path = GetPath(ent);
@@ -52,7 +52,7 @@ namespace UmbracoTextFiles.Events
         /// <param name="e"></param>
         public void UnPublished(IPublishingStrategy sender, PublishEventArgs<IContent> e)
         {
-            LogHelper.Info<TextFileContentEvents>("UnPublished event for UmbracoTextFiles");
+            LogHelper.Info<FileContentEvents>("UnPublished event for UmbracoTextFiles");
             foreach (var ent in e.PublishedEntities.Where(x => x.HasProperty(TextFileContentField)))
             {
                 var path = GetPath(ent);

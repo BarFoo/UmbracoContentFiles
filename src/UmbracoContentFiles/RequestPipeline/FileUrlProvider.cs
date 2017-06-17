@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Umbraco.Core.Services;
 using Umbraco.Web;
 using Umbraco.Web.Routing;
 
-namespace UmbracoTextFiles.RequestPipeline
+namespace UmbracoContentFiles.RequestPipeline
 {
     /// <summary>
     /// Required because Umbraco strips out the period from the URL, this is useful
     /// really for the backoffice link to document
     /// </summary>
-    public class TextFileUrlProvider : IUrlProvider
+    public class FileUrlProvider : IUrlProvider
     {
         public string GetUrl(UmbracoContext umbracoContext, int id, Uri current, UrlProviderMode mode)
         {

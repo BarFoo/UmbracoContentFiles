@@ -1,0 +1,21 @@
+branches:
+  only:
+    - master
+	
+version: 0.2.1.{build}
+	
+build_script:
+  - cd build
+  - Package.build.cmd
+
+artifacts:
+  - path: releases\*.nupkg
+	
+deploy:
+  provider: NuGet
+  server:                  # remove to push to NuGet.org
+  api_key:
+    secure: m49OJ7+Jdt9an3jPcTukHA==
+  skip_symbols: false
+  symbol_server:           # remove to push symbols to SymbolSource.org
+  artifact: /.*\.nupkg/
