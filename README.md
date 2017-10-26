@@ -19,8 +19,8 @@ Install via nuget
 
 `Install-Package UmbracoContentFiles`
 
-## Usage
-To allow content editors to save file content as actual physical files on the file system, which can then be accessed directly e.g. `mysite.com/robots.txt`
+## Usages
+To allow content editors to save content as actual physical files on the file system, which can then be accessed directly e.g. `mysite.com/robots.txt`
 
 ![alt text](https://raw.githubusercontent.com/BarFoo/UmbracoContentFiles/master/docs/screen1.PNG "Screenshot 1")
 
