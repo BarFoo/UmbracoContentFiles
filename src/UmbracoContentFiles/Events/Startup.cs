@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Text;
 using Umbraco.Core;
+using Umbraco.Core.IO;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
 using Umbraco.Core.Services;
@@ -23,59 +24,49 @@ namespace UmbracoContentFiles.Events
 
         public void OnApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            // This part needs a try catch incase Umbraco hasn't been setup yet
-            // Determine if Umbraco is installed ourselves before continuing to use the content type service
-            // This is important because of the ArgumentNullException that will occur in < 7.6 if Umbraco
-            // hasn't been setup/installed fully.
-            // todo: There must be a better way to handle all of the below..
-            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["umbracoConfigurationStatus"]))
+            // Determine if Umbraco has been configured/installed before continuing..
+            if (applicationContext.IsConfigured)
             {
                 return;
             }
+            
+            var contentService = applicationContext.Services.ContentService;
+            var textFileContentEvents = new FileContentEvents(contentService);
 
-            try
+            ContentService.Published += textFileContentEvents.Published;
+            ContentService.UnPublished += textFileContentEvents.UnPublished;
+
+            var contentTypeService = applicationContext.Services.ContentTypeService;
+            var textFileContentType = contentTypeService.GetContentType("contentFile");
+            if (textFileContentType == null)
             {
-                var contentService = applicationContext.Services.ContentService;
-                var textFileContentEvents = new FileContentEvents(contentService);
-                ContentService.Published += textFileContentEvents.Published;
-                ContentService.UnPublished += textFileContentEvents.UnPublished;
+                var textboxMultipleDef = new DataTypeDefinition(-1, "Umbraco.TextboxMultiple");
+                var fileService = applicationContext.Services.FileService;
 
-                var contentTypeService = applicationContext.Services.ContentTypeService;
-                var textFileContentType = contentTypeService.GetContentType("contentFile");
-                if (textFileContentType == null)
+                var template = new Template("Content File", "ContentFile");
+                var sbTemplate = new StringBuilder();
+                sbTemplate.AppendLine("@inherits Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Web.Models.RenderModel>");
+                sbTemplate.AppendLine("@{ Layout = null; }");
+                sbTemplate.Append("@Model.Content.GetPropertyValue(\"fileContent\")");
+                template.Content = sbTemplate.ToString();
+
+                fileService.SaveTemplate(template);
+
+                var contentType = new ContentType(-1)
                 {
-                    var textboxMultipleDef = new DataTypeDefinition(-1, "Umbraco.TextboxMultiple");
-                    var fileService = applicationContext.Services.FileService;
+                    Alias = "contentFile",
+                    Name = "Content File",
+                    Icon = "icon-files",
+                    AllowedTemplates = new ITemplate[] { template }
+                };
 
-                    var template = new Template("Content File", "ContentFile");
-                    var sbTemplate = new StringBuilder();
-                    sbTemplate.AppendLine("@inherits Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Web.Models.RenderModel>");
-                    sbTemplate.AppendLine("@{ Layout = null; }");
-                    sbTemplate.Append("@Model.Content.GetPropertyValue(\"fileContent\")");
-                    template.Content = sbTemplate.ToString();
+                var propertyType = new PropertyType(textboxMultipleDef, "fileContent");
+                propertyType.Name = "Content";
 
-                    fileService.SaveTemplate(template);
+                contentType.AddPropertyGroup("Content");
+                contentType.AddPropertyType(propertyType, "Content");
 
-                    var contentType = new ContentType(-1)
-                    {
-                        Alias = "contentFile",
-                        Name = "Content File",
-                        Icon = "icon-files",
-                        AllowedTemplates = new ITemplate[] { template }
-                    };
-
-                    var propertyType = new PropertyType(textboxMultipleDef, "fileContent");
-                    propertyType.Name = "Content";
-
-                    contentType.AddPropertyGroup("Content");
-                    contentType.AddPropertyType(propertyType, "Content");
-
-                    contentTypeService.Save(contentType);
-                }
-            }
-            catch (Exception ex)
-            {
-                LogHelper.Error<Startup>("Unable to setup content file document type", ex);
+                contentTypeService.Save(contentType);
             }
         }
     }
