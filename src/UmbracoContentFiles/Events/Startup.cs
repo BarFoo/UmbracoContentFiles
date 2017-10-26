@@ -37,36 +37,44 @@ namespace UmbracoContentFiles.Events
             ContentService.UnPublished += textFileContentEvents.UnPublished;
 
             var contentTypeService = applicationContext.Services.ContentTypeService;
-            var textFileContentType = contentTypeService.GetContentType("contentFile");
-            if (textFileContentType == null)
+
+            try
             {
-                var textboxMultipleDef = new DataTypeDefinition(-1, "Umbraco.TextboxMultiple");
-                var fileService = applicationContext.Services.FileService;
-
-                var template = new Template("Content File", "ContentFile");
-                var sbTemplate = new StringBuilder();
-                sbTemplate.AppendLine("@inherits Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Web.Models.RenderModel>");
-                sbTemplate.AppendLine("@{ Layout = null; }");
-                sbTemplate.Append("@Model.Content.GetPropertyValue(\"fileContent\")");
-                template.Content = sbTemplate.ToString();
-
-                fileService.SaveTemplate(template);
-
-                var contentType = new ContentType(-1)
+                var textFileContentType = contentTypeService.GetContentType("contentFile");
+                if (textFileContentType == null)
                 {
-                    Alias = "contentFile",
-                    Name = "Content File",
-                    Icon = "icon-files",
-                    AllowedTemplates = new ITemplate[] { template }
-                };
+                    var textboxMultipleDef = new DataTypeDefinition(-1, "Umbraco.TextboxMultiple");
+                    var fileService = applicationContext.Services.FileService;
 
-                var propertyType = new PropertyType(textboxMultipleDef, "fileContent");
-                propertyType.Name = "Content";
+                    var template = new Template("Content File", "ContentFile");
+                    var sbTemplate = new StringBuilder();
+                    sbTemplate.AppendLine("@inherits Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Web.Models.RenderModel>");
+                    sbTemplate.AppendLine("@{ Layout = null; }");
+                    sbTemplate.Append("@Model.Content.GetPropertyValue(\"fileContent\")");
+                    template.Content = sbTemplate.ToString();
 
-                contentType.AddPropertyGroup("Content");
-                contentType.AddPropertyType(propertyType, "Content");
+                    fileService.SaveTemplate(template);
 
-                contentTypeService.Save(contentType);
+                    var contentType = new ContentType(-1)
+                    {
+                        Alias = "contentFile",
+                        Name = "Content File",
+                        Icon = "icon-files",
+                        AllowedTemplates = new ITemplate[] { template }
+                    };
+
+                    var propertyType = new PropertyType(textboxMultipleDef, "fileContent");
+                    propertyType.Name = "Content";
+
+                    contentType.AddPropertyGroup("Content");
+                    contentType.AddPropertyType(propertyType, "Content");
+
+                    contentTypeService.Save(contentType);
+                }
+            }
+            catch(Exception ex)
+            {
+                LogHelper.Error<Startup>("Cannot setup file content type", ex);
             }
         }
     }
