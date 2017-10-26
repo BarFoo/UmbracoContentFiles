@@ -1,4 +1,4 @@
-# Umbraco Content Files (Alpha)
+# Umbraco Content Files for v7.3+
 Provides syncing text based content to physical files. 
 
 This package will create a new document type named 'Content File' if one doesn't already exist. 
@@ -19,8 +19,8 @@ Install via nuget
 
 `Install-Package UmbracoContentFiles`
 
-## Usage
-To allow content editors to save file content as actual physical files on the file system, which can then be accessed directly e.g. `mysite.com/robots.txt`
+## Usages
+To allow content editors to save content as actual physical files on the file system, which can then be accessed directly e.g. `mysite.com/robots.txt`
 
 ![alt text](https://raw.githubusercontent.com/BarFoo/UmbracoContentFiles/master/docs/screen1.PNG "Screenshot 1")
 
