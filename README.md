@@ -1,4 +1,4 @@
-# Umbraco Content Files (Alpha)
+# Umbraco Content Files for v7.3+
 Provides syncing text based content to physical files. 
 
 This package will create a new document type named 'Content File' if one doesn't already exist. 
