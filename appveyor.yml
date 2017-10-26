@@ -11,7 +11,7 @@ build_script:
 artifacts:
   - path: releases\*.nupkg
 
- cache:
+cache:
   - packages -> **\packages.config      # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified 
   
 deploy:
