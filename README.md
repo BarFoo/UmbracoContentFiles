@@ -25,3 +25,7 @@ To allow content editors to save content as physical files on the file system, w
 ![alt text](https://raw.githubusercontent.com/BarFoo/UmbracoContentFiles/master/docs/screen1.PNG "Screenshot 1")
 
 The extension of the file will match that used in the content name, for example; `.txt`, `.html`, `.csv` etc. Extensionless files are also supported since version 0.2.3 with the addition of a template.
+
+## Load Balancing
+
+To use in a load balanced environment where a CMS instance is separated from FE instances you will currently need to setup some kind of custom file replication. In future versions better support for load balanced environments with this kind of setup will be better supported out of the box.
