@@ -16,8 +16,6 @@ cache:
   
 deploy:
   provider: NuGet
-  api_key:
-    secure: cOErtJQNPk64rHATxlhnmKgYsqvnGwHPo30EtqoAg7e2VES5rmBLfHVoNx4+qoac
   skip_symbols: false
   artifact: /.*\.nupkg/
   symbol_server: http://nuget.smbsrc.net
